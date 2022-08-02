@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- mustache  -->
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+
+</head>
+
+<body class="body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- countries component -->
+            <div class="countriesSection">
+                <div class="lds-roller">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <!----------------------->
+                <!-- large screen -->
+                <div id="carouselExampleIndicators" class="carousel slide  d-none d-sm-block" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="carousel-inner-lg">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class=" row  m-3  justify-content-center px-5 " id="currentCountryCard">
+              
+        </div>
+        <div class="newsContainer"></div>
+
+    </div>
+    <script id="countryCard_template" type="text/template">
+        <div class="currentCountryCard m-3 border">
+            <img src={{flags.png}} alt="" class="m-3 current_country_flag">
+            <div class="m-3">
+                <h3 class="country_name mb-3">{{name.official}}</h3>
+                <p>Capital: {{capital}}<br>
+                Currency: {{currency}}<br>
+                Language:  {{language}}<br>
+                Population : {{population}}<br>
+                Subregion : {{subregion}}<br>
+                TimeZone: {{timezones.0}}<br>
+    
+            </div>
+        </div>
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <!--jQuery  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- script -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
