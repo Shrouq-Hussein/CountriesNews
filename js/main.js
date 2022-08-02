@@ -23,7 +23,7 @@ var countriesSlider = {
     },
     chacheElements: function () {
         this.$carousel_inner_lg = $("#carousel-inner-lg")
-        this.$lds_roller = $(".lds-roller")
+        this.$lds_roller = $(".countriesSection .lds-roller")
 
         console.log(this.$carousel_inner_lg)
         console.log(this.$lds_roller)
@@ -104,6 +104,7 @@ var currentCountryCard = {
        this.render()
     },
     render:function(){
+        this.$countryCard.addClass("border")
         this.$countryCard.html(
             Mustache.render(this.template,this.data)
         )
@@ -122,6 +123,7 @@ var currentCountryNews = {
     cacheElements: function(){
        this.$newsContainer = $("#newsContainer")
        this.template = $("#countryNewsCard").html()
+       this.$loader =  $(".newsSection .lds-roller")
     },
     bindEvents: function(){
         eventsMediator.on("changeCurrentCountry",this.changeData.bind(this))
@@ -149,6 +151,7 @@ var currentCountryNews = {
             success:function(data){
                console.log(data)
                currentCountryNews.news = data.sources
+               currentCountryNews.$loader.css("display","none")
                currentCountryNews.render()
                 // $.each(data.sources,function(i,article){
                 //    console.log(article)

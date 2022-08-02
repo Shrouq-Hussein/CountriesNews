@@ -2,7 +2,7 @@
   background-color: #0c2747;
 }
 
-.countriesSection {
+.countriesSection ,.newsSection{
   position: relative;
 }
 
@@ -150,13 +150,13 @@
 
 
 .currentCountryCard{
-  width: 50%;
   color: #fff;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+ 
 }
 .current_country_flag{
   width: 10rem;
   height: 8rem;
+}
+.newsContainer{
+  position: relative;
 }
