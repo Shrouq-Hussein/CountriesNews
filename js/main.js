@@ -117,17 +117,48 @@ var currentCountryNews = {
     init:function(){
        this.cacheElements()
        this.bindEvents()
-       this.render()
+    //    this.render()
     },
     cacheElements: function(){
-       
+       this.$newsContainer = $("#newsContainer")
+       this.template = $("#countryNewsCard").html()
     },
     bindEvents: function(){
+        eventsMediator.on("changeCurrentCountry",this.changeData.bind(this))
+
     },
     render:function(){
-        this.$countryCard.html(
-            Mustache.render(this.template,this.data)
-        )
+        console.log("eeeeeeeeeeee",this.news)
+        this.news.forEach(function(article){
+            console.log(article)
+            currentCountryNews.$newsContainer.append(
+                Mustache.render(currentCountryNews.template,article)
+            )
+        })
+        
+    },
+    changeData : function(obj){
+        this.fetchNews()
+             
+    },
+    fetchNews: function(){
+        $.ajax({
+            type: "GET"
+            ,
+            url: "https://newsapi.org/v2/top-headlines/sources?country=us&apiKey=a19552223d634010a1ff2550c20d7933",
+            success:function(data){
+               console.log(data)
+               currentCountryNews.news = data.sources
+               currentCountryNews.render()
+                // $.each(data.sources,function(i,article){
+                //    console.log(article)
+   
+                //     var description = article.description
+                //   $test.append(`<div>${description} </div>`)
+                // })
+            }
+        })
+
     },
 
 }
@@ -152,4 +183,5 @@ var eventsMediator ={
 }
 
 countriesSlider.init()
+currentCountryNews.init()
 

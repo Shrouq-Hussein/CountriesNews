@@ -45,7 +45,9 @@
         <div class=" row  m-3  justify-content-center px-5 " id="currentCountryCard">
               
         </div>
-        <div class="newsContainer"></div>
+        <div class="newsContainer row justify-content-center m-3" id="newsContainer">
+
+        </div>
 
     </div>
     <script id="countryCard_template" type="text/template">
@@ -58,7 +60,18 @@
                 Language:  {{language}}<br>
                 Population : {{population}}<br>
                 Subregion : {{subregion}}<br>
-                TimeZone: {{timezones.0}}<br>
+                TimeZone: {{timezones.0}}<br> </p>
+    
+            </div>
+        </div>
+    </script>
+
+    <script id="countryNewsCard" type="text/template">
+        <div class="currentCountryCard m-2 border">
+            <!-- <img src={{}} alt="" class="m-3 "> -->
+            <div class="m-3">
+                <h3 class="country_name mb-3">{{name}}</h3>
+                <p>{{description}}</p>
     
             </div>
         </div>
