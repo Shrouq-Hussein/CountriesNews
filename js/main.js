@@ -130,6 +130,7 @@ var currentCountryNews = {
 
     },
     render:function(){
+        currentCountryNews.$newsContainer.html("")
         this.news.forEach(function(article){
             console.log(article)
             if(article.description && article.author && article.urlToImage){
@@ -145,11 +146,12 @@ var currentCountryNews = {
              
     },
     fetchNews: function(obj){
-        console.log(obj)
+        console.log(obj.cca2.toLowerCase())
+        var countryCode = obj.cca2.toLowerCase()
         $.ajax({
             type: "GET"
             ,
-            url: `https://newsapi.org/v2/top-headlines?country=ar&apiKey=a19552223d634010a1ff2550c20d7933`,
+            url: `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=a19552223d634010a1ff2550c20d7933`,
             success:function(data){
                console.log(data)
                currentCountryNews.news = data.articles
