@@ -17,6 +17,7 @@ var countriesSlider = {
                 countriesSlider.$lds_roller.css("display","none")
                 countriesSlider.render()
                 currentCountryCard.init()
+                currentCountryNews.init()
             }
         })
         console.log(this.countries)
@@ -227,7 +228,7 @@ var currentCountryNews = {
     init:function(){
        this.cacheElements()
        this.bindEvents()
-    //    this.render()
+       this.fetchNews(countriesSlider.countries[0])
     },
     cacheElements: function(){
        this.$newsContainer = $("#newsContainer")
@@ -299,5 +300,5 @@ var eventsMediator ={
 }
 
 countriesSlider.init()
-currentCountryNews.init()
+
 
