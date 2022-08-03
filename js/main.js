@@ -130,27 +130,29 @@ var currentCountryNews = {
 
     },
     render:function(){
-        console.log("eeeeeeeeeeee",this.news)
         this.news.forEach(function(article){
             console.log(article)
+            if(article.description && article.author && article.urlToImage){
             currentCountryNews.$newsContainer.append(
                 Mustache.render(currentCountryNews.template,article)
             )
+            }
         })
         
     },
     changeData : function(obj){
-        this.fetchNews()
+        this.fetchNews(obj)
              
     },
-    fetchNews: function(){
+    fetchNews: function(obj){
+        console.log(obj)
         $.ajax({
             type: "GET"
             ,
-            url: "https://newsapi.org/v2/top-headlines/sources?country=us&apiKey=a19552223d634010a1ff2550c20d7933",
+            url: `https://newsapi.org/v2/top-headlines?country=ar&apiKey=a19552223d634010a1ff2550c20d7933`,
             success:function(data){
                console.log(data)
-               currentCountryNews.news = data.sources
+               currentCountryNews.news = data.articles
                currentCountryNews.$loader.css("display","none")
                currentCountryNews.render()
                 // $.each(data.sources,function(i,article){

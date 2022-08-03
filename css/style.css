@@ -151,7 +151,7 @@
 
 .currentCountryCard{
   color: #fff;
- 
+ position: relative;
 }
 .current_country_flag{
   width: 10rem;
@@ -159,4 +159,18 @@
 }
 .newsContainer{
   position: relative;
+}
+.newsImg{
+  height: 10rem;
+
+}
+.published_at{
+position: absolute;
+bottom: 0rem;
+right: 0.5rem;
+}
+.published_at a , .published_at a:hover , .published_at a:visited{
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
 }
