@@ -33,8 +33,11 @@
                     <div></div>
                 </div>
                 <!----------------------->
-                <!-- large screen -->
-                <div  class="carousel slide  " data-bs-ride="carousel" id="carouselExampleIndicators">
+                <h1 id="title"></h1>
+
+                 <!-- large screen -->
+                <div  class="carousel slide d-none d-sm-block " data-bs-ride="carousel" id="carouselExampleIndicators">
+
                     <div class="carousel-inner" id="carousel-inner-lg">
 
                     </div>
@@ -44,6 +47,24 @@
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+
+                <!-- small screen -->
+                <div  class="carousel slide d-sm-none" data-bs-ride="carousel" id="carouselSmallIndicators">
+
+                    <div class="carousel-inner" id="carousel-inner-sm">
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSmallIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselSmallIndicators"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>

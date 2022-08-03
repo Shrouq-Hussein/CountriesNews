@@ -23,36 +23,142 @@ var countriesSlider = {
     },
     chacheElements: function () {
         this.$carousel_inner_lg = $("#carousel-inner-lg")
+        this.$carousel_inner_sm = $("#carousel-inner-sm")
         this.$lds_roller = $(".countriesSection .lds-roller")
-
+        this.$title = $("#title")
         console.log(this.$carousel_inner_lg)
         console.log(this.$lds_roller)
     },
     bindEvents: function () {
         this.$carousel_inner_lg.on("click",".carousel-item .country_card ",this.changeCurrentCountry)
+        this.$carousel_inner_sm.on("click",".carousel-item .country_card ",this.changeCurrentCountry)
+
+        eventsMediator.on("changeCurrentCountry",this.changeTitle.bind(this))
+
     },
     render: function () {
         console.log("render",this.countries)
        if(this.countries)
        {
-        this.countries.forEach(function (country) {
-            var active = countriesSlider.countries[0]==country? "active":""
+        for(let i=0; i< this.countries.length ;i+=4)
+        {
+            
+            var active = i==0? "active":""
+            
+            countriesSlider.$carousel_inner_lg.append(
+            `<div class="carousel-item  border my-3 ${active}">
+                <div class="row justify-content-center">
+                    <div class="col-lg-2 col-md-2  col-sm-10  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i]["cca2"]}>
+                      <div class="country_img_container mb-3">
+                        <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                      </div> 
+                      <div class="country_names_container">
+                        <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                        <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                      </div>
+                    </div> 
 
-            countriesSlider.$carousel_inner_lg.append(`<div class="carousel-item  border my-3 ${active}">
-            <div class="row justify-content-center">
-            <div class="col-lg-2 col-md-2  col-sm-10  align_text_center p-3 m-2 card country_card" data-country=${country["cca2"]}>
-            <div class="country_img_container mb-3">
-            <img src="${country["flags"]["png"]}" alt="" class="country_img">
-            </div> 
-            <div class="country_names_container">
-            <h4 class="country_name"> ${country["name"]["official"]} </h4>
-            <h5 class="country_capital"> ${country["capital"]}  </h5>
-            </div>
-           </div> 
-           </div> </div>`
+                    <div class="col-lg-2 col-md-2  col-sm-10  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                      <div class="country_img_container mb-3">
+                        <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                      </div> 
+                      <div class="country_names_container">
+                        <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                        <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                      </div>
+                    </div> 
+
+                    <div class="col-lg-2 col-md-2  col-sm-10  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                      <div class="country_img_container mb-3">
+                        <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                      </div> 
+                      <div class="country_names_container">
+                        <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                        <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-2  col-sm-10  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                      <div class="country_img_container mb-3">
+                        <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                      </div> 
+                      <div class="country_names_container">
+                        <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                        <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                      </div>
+                    </div> 
+
+                   
+
+
+                    
+                </div>
+            </div>`
+            )
+           
+            countriesSlider.$carousel_inner_sm.append(
+                `
+                <div class="carousel-item  border my-3 ${active}">
+                    <div class="row justify-content-center">
+                        <div class="col-6  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i-=3]["cca2"]}>
+                            <div class="country_img_container mb-3">
+                                <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                            </div> 
+                            <div class="country_names_container">
+                                <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                                <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="carousel-item  border my-3 ">
+                    <div class="row justify-content-center">
+                        <div class="col-6  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                            <div class="country_img_container mb-3">
+                                <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                            </div> 
+                            <div class="country_names_container">
+                                <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                                <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="carousel-item  border my-3 ">
+                    <div class="row justify-content-center">
+                        <div class="col-6  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                            <div class="country_img_container mb-3">
+                                <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                            </div> 
+                            <div class="country_names_container">
+                                <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                                <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="carousel-item  border my-3 ">
+                    <div class="row justify-content-center">
+                        <div class="col-6  align_text_center p-3 m-2 card country_card" data-country=${countriesSlider.countries[i+=1]["cca2"]}>
+                            <div class="country_img_container mb-3">
+                                <img src="${countriesSlider.countries[i]["flags"]["png"]}" alt="" class="country_img">
+                            </div> 
+                            <div class="country_names_container">
+                                <h4 class="country_name"> ${countriesSlider.countries[i]["name"]["official"]} </h4>
+                                <h5 class="country_capital"> ${countriesSlider.countries[i]["capital"]}  </h5>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            `
             )
 
-        })
+            // i+=3
+
+        }
        }
    
     }
@@ -73,6 +179,9 @@ var countriesSlider = {
     setCurrentCountry: function(obj){
             console.log(obj)
             this.currentCountry = obj
+    },
+    changeTitle: function(data){
+        this.$title.html(`${data.continents[0]} News`)
     },
 
 }
@@ -151,7 +260,7 @@ var currentCountryNews = {
         $.ajax({
             type: "GET"
             ,
-            url: `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=a19552223d634010a1ff2550c20d7933`,
+            url: `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=4a4291b4576d479e8c3eb0ac4a7332d6`,
             success:function(data){
                console.log(data)
                currentCountryNews.news = data.articles
